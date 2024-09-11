@@ -34,10 +34,12 @@ int main(void) {
             /*camera_phi -= delta.y * 0.01;*/
         }
 
+        ClearBackground(BLACK);
+
         BeginDrawing();
         {
 
-            ClearBackground(BLACK);
+            DrawFPS(1, 1);
             Camera3D camera = {
                 .position = {
                     .x = sinf(camera_theta) * cosf(camera_phi) * camera_mag,
