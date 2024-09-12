@@ -1,47 +1,72 @@
 #include <raylib.h>
 #include <stdbool.h>
 
+#define MAX_FPS 60
+#define WIDTH 800
+#define HEIGHT 600
+#define SIZE 30
+#define SPEED 10
+
 int main() {
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-    InitWindow(800, 600, "Bouncing ball");
-    SetTargetFPS(60);
+    MaximizeWindow();
+    InitWindow(GetScreenWidth(), GetScreenHeight(), "Bouncing ball");
+    SetTargetFPS(MAX_FPS);
 
-    int x = 250;
-    int y = 250;
-    int radius = 50;
-    int speedX = 5;
-    int speedY = 5;
+    /*start ball in the middle of the screen*/
+    int x = WIDTH / 2;
+    int y = HEIGHT / 2;
+
+    int radius = SIZE / 2;
+    int speed_x = SPEED;
+    int speed_y = SPEED;
+
+    int rect_x = WIDTH / 1;
+    int rect_y = HEIGHT / 1;
 
     while (!WindowShouldClose()) {
 
-        float deltaTime = GetFrameTime();
+        ClearBackground(BLACK);
 
-        bool H_X = false;
-        bool H_Y = false;
+        float deltaTime = GetFrameTime();
+        DrawFPS(1, 1);
+
+        bool hit_sides = false;
+        bool hit_up_down = false;
 
         BeginDrawing();
-        ClearBackground(BLACK);
+
         {
             if (x - radius <= 0 || x + radius >= GetScreenWidth()) {
-                speedX = -1 * speedX;
-                x = x + speedX;
-                H_X = true;
+                speed_x = -1 * speed_x;
+                x = x + speed_x;
+                hit_sides = true;
             }
 
             if (y - radius <= 0 || y + radius >= GetScreenHeight()) {
-                speedY = -1 * speedY;
-                y = y + speedY;
-                H_Y = true;
+                speed_y = -1 * speed_y;
+                y = y + speed_y;
+                hit_up_down = true;
             }
 
-            if (H_X || H_Y) {
-                /*r++;*/
-            }
-            x = x + speedX;
-            y = y + speedY;
+            if (hit_sides || hit_up_down) {
+                /*radius++;*/
 
-            DrawCircle(x, y, radius, GREEN);
+                /*ClearBackground(BLACK);*/
+            }
+            x = x + speed_x;
+            y = y + speed_y;
+
+            /*DrawCircle(x, y, radius, WHITE);*/
+
+            DrawRectangle(rect_x, rect_y, SIZE * 2, SIZE * 2, GREEN);
+            Vector2 mouse_pos = GetMousePosition();
+
+            if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+                rect_x = mouse_pos.x;
+                rect_y = mouse_pos.y;
+            }
         }
         EndDrawing();
     }
