@@ -31,7 +31,7 @@ int main(void) {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             Vector2 delta = GetMouseDelta();
             camera_theta -= delta.x * 0.01;
-            /*camera_phi -= delta.y * 0.01;*/
+            camera_phi -= delta.y * 0.01;
         }
 
         ClearBackground(BLACK);
@@ -55,6 +55,7 @@ int main(void) {
             BeginMode3D(camera);
             {
                 DrawCube(Vector3Zero(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, GREEN);
+                DrawCubeWires(Vector3Zero(), CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, RED);
             }
             EndMode3D();
         }

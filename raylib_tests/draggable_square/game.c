@@ -1,6 +1,5 @@
 #include <raylib.h>
 #include <stdbool.h>
-#include <stdio.h>
 
 #define MAX_FPS 1000
 #define WIDTH 900
@@ -9,7 +8,7 @@
 #define SPEED 10
 #define MAX_SIZE 501
 
-#define TEXT "hi"
+#define TEXT "roblox"
 
 void resize_square(Rectangle *square) {
 
@@ -47,6 +46,8 @@ int main() {
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(WIDTH, HEIGHT, "Raylib");
     SetTargetFPS(MAX_FPS);
+    SetWindowIcon(LoadImage("resources/image.png"));
+    SetExitKey(KEY_NULL);
     InitAudioDevice();
 
     Sound button_snd = LoadSound("resources/sound.mp3");
