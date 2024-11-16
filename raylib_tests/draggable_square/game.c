@@ -114,8 +114,8 @@ int main() {
         BeginDrawing();
         {
             // snd button
-            DrawRectangle(button.x, button.y, button.width, button.height, RED);
-            DrawTexture(thirty, button.x, button.y, WHITE);
+            /*DrawRectangle(button.x, button.y, button.width, button.height, RED);*/
+            /*DrawTexture(thirty, button.x, button.y, WHITE);*/
 
             // draggable square
             DrawRectangleV(square_pos, square_size, GREEN);
