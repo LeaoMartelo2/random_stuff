@@ -1,0 +1,13 @@
+#ifndef MAP_MAP
+#define MAP_MAP
+
+const int map[5][5] = {
+    {1, 1, 1, 1, 1},
+    {1, 0, 0, 0, 1},
+    {1, 0, 1, 0, 1},
+    {1, 0, 0, 0, 1},
+    {1, 1, 1, 1, 1}
+
+};
+
+#endif // !MAP_MAP
